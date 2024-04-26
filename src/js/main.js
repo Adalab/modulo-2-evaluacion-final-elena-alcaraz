@@ -8,21 +8,36 @@ const SERVER_URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
 const buttonReset = document.querySelector('.js_reset');
 
 let coctailsData = []
+let coctailsFavorite = [];
 
 
 //RENDERIZAR LAS BEBIDAS
 const renderOneCoctail = (eachCoctail) => {
-    return `<li class= "card"> 
+    return `<li class="card js_coctails_li" id="${eachCoctail.idDrink}"> 
         <h6>${eachCoctail.strDrink}</h6>
         <img src="${eachCoctail.strDrinkThumb}"/>
     </li>`
     //¿meter aquí condicional para las bebidas que no tengan foto? 
 };
 
+const addFavorite = (ev) => {
+    console.log(ev.currentTarget.id)
+    const idCoctail = ev.currentTarget.id;
+    const coctail = coctailsData.find(coctail => coctail.idDrink === idCoctail);
+    coctailsFavorite.push(coctail);
+    console.log(coctailsFavorite);
+};
+
 const renderAllCoctails = () => {
     for (let i = 0; i < coctailsData.length; i++) {
         ulList.innerHTML += renderOneCoctail(coctailsData[i])
     }
+
+    const allCoctailsLi = document.querySelectorAll('.js_coctails_li');
+    for (let i = 0; i < allCoctailsLi.length; i++) {
+        allCoctailsLi[i].addEventListener('click', addFavorite);
+    }
+
 };
 
 

@@ -1,9 +1,21 @@
 @import 'core/variables';
 @import 'core/reset';
-/* @import 'components/code';
-@import 'components/links';
-@import 'layout/page';
 @import 'layout/header';
 @import 'layout/footer';
-@import 'pages/index'; */
+  
+.searchArea {
+    display: flex;
+}
 
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: solid 4px;
+    width: 108px;
+}
+
+img {
+    width: 100px;
+}

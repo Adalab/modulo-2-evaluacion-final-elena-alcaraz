@@ -20,11 +20,26 @@ const renderOneCoctail = (eachCoctail) => {
     //¿meter aquí condicional para las bebidas que no tengan foto? 
 };
 
+
+///ME HE QUEDADO TRABAJANDO AQUÍ
 const addFavorite = (ev) => {
     console.log(ev.currentTarget.id)
     const idCoctail = ev.currentTarget.id;
-    const coctail = coctailsData.find(coctail => coctail.idDrink === idCoctail);
-    coctailsFavorite.push(coctail);
+    //aquí estoy pidiendo que el coctail.idDrink sea igual al idCoctail, encuentra en el array un time cuyo ID sea igual al id que tenemos arriba, lo que nos devolverá la info del coctail clicado. Así, obtenemos todos los datos del coctail clicado. 
+    const clickedCoctail = coctailsData.find(item => item.idDrink === idCoctail);
+
+    //verificar si la paleta cliada ya es un fav
+    const isFavoriteCoctailIndex = coctailsFavorite.findIndex(item => item.idDrink === idCoctail);
+    //condicional para
+    if (isFavoriteCoctailIndex === -1) {
+        //añadimos el coctail si no está
+        coctailsFavorite.push(clickedCoctail);
+    } else {
+        //si está, lo quitamos de favoritos
+        coctailsFavorite.splice(isFavoriteCoctailIndex, 1);
+    };
+
+     
     console.log(coctailsFavorite);
 };
 

@@ -2,20 +2,48 @@
 @import 'core/reset';
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/cards';
+@import 'layout/lists';
   
+
+.body {
+    @media screen and (min-width: 768px){
+        background-image: url('/images/logo-coctail.png');
+    }
+}
+
 .searchArea {
     display: flex;
+    background-color: var(--verde);
+    padding: 20px;
+
+    .search {
+        font-family: var(--brand-font);
+        font-weight: 400;
+        font-size: large;
+        color: var(--azul-oscuro);
+    }
+
+    @media screen and (min-width: 768px){
+        margin-top: 10px;
+        margin-left: 100px;
+    }
+
+    .search {
+        padding: 8px;
+    }
+
+    .filter {
+        font-family: var(--brand-font);
+        font-weight: 800;
+        color: var(--verde);
+        font-size: large;
+        padding: 8px;
+        background-color: var(--azul);
+    }
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    border: solid 4px;
-    width: 108px;
+.hidden {
+    display: none;
 }
 
-img {
-    width: 100px;
-}

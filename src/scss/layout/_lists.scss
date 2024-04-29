@@ -1,0 +1,50 @@
+.drinksList {
+    margin-top: 10px;
+    padding-bottom: 20px;
+    font-family: var(--brand-font);
+    font-size: 25px;
+    font-weight: 50;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    background-image: linear-gradient(to right, #AFCC56, #06ABAB);
+    
+
+    @media screen and (min-width: 768px){
+        justify-content: space-around;
+        margin-left: 100px;
+    }
+
+    .favList {
+        color: var(--granate);
+        width: 50vw;
+
+        &_h5 {
+            padding: 10px;
+        }
+        
+        &_ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .coctailsList {
+        color: var(--granate);
+        width: 50vw;
+
+        &_h5 {
+            padding: 10px;
+        }
+
+        &_ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

@@ -1,8 +1,31 @@
-.page__footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-  padding: 1rem;
-  color: $color-secondary;
+.footer {
+    border-top: 1px solid var(--azul-oscuro);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+
+    &_license {
+        font-family: var(--brand-font);
+        color: var(--azul-oscuro);
+        margin-left: 20px;
+        margin-top: 10px;
+        font-size: small;
+
+        @media screen and (width> 1019px) {
+            font-size: 20px;
+        }
+    }
+
+    &_logo {
+        width: 35px;
+        margin-right: 20px;
+
+        @media screen and (min-width: 768px){
+            width: 60px;
+            height: 60px;
+        }
 }
+};

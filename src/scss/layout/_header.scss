@@ -1,5 +1,25 @@
-.page__header {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 3rem;
+.header {
+    font-family: var(--brand-font);
+    font-size: x-large;
+    background-color: var(--amarillo);
+    color: var(--granate);
+    background-image: url('/images/logo-coctail.png');
+    background-size: cover;
+    background-position: end;
+    background-repeat: no-repeat;
+    padding-bottom: 30px;
+
+    @media screen and (min-width: 768px){
+        margin-left: 100px;
+        padding: 30px;
+        background-image: none;
+    }
+
+    &_p {
+        padding-top: 15px;
+        font-style: italic;
+        color: black;
+    }
+    
 }
+

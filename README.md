@@ -1,4 +1,3 @@
-![Adalab](https://beta.adalab.es/resources/images/adalab-logo-155x61-bg-white.png)
 
 # Aplicación de buscador de cócteles
 
@@ -8,7 +7,7 @@
 
 - Hacer una búsqueda de cócteles: a través del formulario de búsqudeda, podrás buscar por nombre tus cócteles favoritos. La aplicación mostrará todas las coicidencias, además de avisarte si no hay ninguna. 
 - Añadir a favoritos: a través de un click podrás añadir a una lista de favoritos los cócteles que más te gusten. Además, si más tarde quieres eliminar cócteles de tu lista de favoritos, podrás hacerlo a través del botón que se muestra dentro de la tarjeta. 
-- Ver favoritos: accede a tu lista de favoritos en cualquier momento. 
+- Ver favoritos: accede a tu lista de favoritos en cualquier momento.
 
 ## Tecnologías utilizadas
 

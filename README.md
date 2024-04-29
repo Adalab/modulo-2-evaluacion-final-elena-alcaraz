@@ -1,4 +1,3 @@
-![logo-coctail](https://github.com/Adalab/modulo-2-evaluacion-final-elena-alcaraz/assets/156465486/7858642e-fd7d-4f23-ab60-f299f633747f)
 
 # Aplicación de buscador de cócteles
 

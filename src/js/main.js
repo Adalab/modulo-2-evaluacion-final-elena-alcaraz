@@ -15,9 +15,8 @@ let coctailsFavorite = [];
 
 //BUSCAR
 function search () {
-    console.log(inputSearch.value);
     ulList.innerHTML = '';
-    getData();
+    getData(inputSearch.value);
 };
 
 buttonSearch.addEventListener('click', search);
@@ -32,8 +31,8 @@ buttonReset.addEventListener('click', reset);
 
 
 // FETCH A LA API
-const getData = () => {
-    fetch(SERVER_URL + inputSearch.value)
+const getData = (value) => {
+    fetch(SERVER_URL + value)
         .then(response => response.json())
         .then(dataApi => {
             coctailsData = dataApi.drinks;
@@ -46,20 +45,23 @@ const getData = () => {
         })
 };
 
-//RENDERIZAR LAS BEBIDAS
+getData("margarita");
+
+//RENDERIZAR UNA BEBIDA
 const renderOneCoctail = (eachCoctail) => {
     let imgCoctail = eachCoctail.strDrinkThumb;
     if (imgCoctail === null) {
         imgCoctail = 'https://media.glamour.mx/photos/632371dd8645b8d42bd2a706/master/pass/cocteles-para-el-15-de-septiembre.jpg'
     }
-    //convertir en operador ternario lo de arriba? 
+    //convertir en operador ternario lo de arriba?    
+
     return `<li class="card js_coctails_li" id="${eachCoctail.idDrink}"> 
         <h6>${eachCoctail.strDrink}</h6>
         <img src="${imgCoctail}"/>
     </li>`
 };
 
-//render todas las bebidas
+//RENDERIZAR TODAS LAS BEBIDAS
 const renderAllCoctails = () => {
     //pintamos los cócteles
     for (let i = 0; i < coctailsData.length; i++) {
@@ -70,6 +72,7 @@ const renderAllCoctails = () => {
     const allCoctailsLi = document.querySelectorAll('.js_coctails_li');
     for (let i = 0; i < allCoctailsLi.length; i++) {
         allCoctailsLi[i].addEventListener('click', addFavorite);
+
     }
 
 };
@@ -100,6 +103,7 @@ const addFavorite = (ev) => {
 
 //RENDERIZAR FAVORITOS
 const renderOneFavoriteCoctail = (eachCoctail) => {
+
     return `<li class="card fav_coctail js_coctails_li">
         <button class="btn_remove js_remove_fav" id="${eachCoctail.idDrink}">Eliminar de favoritos</button>
         <h6>${eachCoctail.strDrink}</h6>

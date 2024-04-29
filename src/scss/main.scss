@@ -35,12 +35,19 @@
 
     .filter {
         font-family: var(--brand-font);
+        border: solid 2px var(--amarillo);
         font-weight: 800;
         color: var(--verde);
         font-size: large;
         padding: 8px;
         background-color: var(--azul);
     }
+}
+
+@media (hover: hover) {
+    .filter:hover {
+        transform: scale(1.2);
+    }  
 }
 
 .hidden {

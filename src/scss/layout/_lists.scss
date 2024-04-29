@@ -29,6 +29,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            @media screen and (min-width: 900px){
+                padding-left: 20px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+                list-style: none;
+            }
         }
     }
 
@@ -45,6 +53,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            @media screen and (min-width: 900px){
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            list-style: none;
+            }
         }
     }
 }

@@ -16,7 +16,12 @@ let coctailsFavorite = [];
 //BUSCAR
 function search () {
     ulList.innerHTML = '';
-    getData(inputSearch.value);
+    if (inputSearch.value === '') {
+        alert('Introduce un coctail para poder buscar :)')
+        getData("margarita");
+    } else {
+        getData(inputSearch.value);
+    }
 };
 
 buttonSearch.addEventListener('click', search);
@@ -53,12 +58,12 @@ const renderOneCoctail = (eachCoctail) => {
     if (imgCoctail === null) {
         imgCoctail = 'https://media.glamour.mx/photos/632371dd8645b8d42bd2a706/master/pass/cocteles-para-el-15-de-septiembre.jpg'
     }
-    //convertir en operador ternario lo de arriba?    
-
+    //convertir en operador ternario lo de arriba?
+    
     return `<li class="card js_coctails_li" id="${eachCoctail.idDrink}"> 
         <h6>${eachCoctail.strDrink}</h6>
         <img src="${imgCoctail}"/>
-    </li>`
+        </li>`
 };
 
 //RENDERIZAR TODAS LAS BEBIDAS
@@ -79,7 +84,6 @@ const renderAllCoctails = () => {
 
 ///añadir favorito
 const addFavorite = (ev) => {
-    console.log(ev.currentTarget.id)
     const idCoctail = ev.currentTarget.id;
     //obtenemos todos los datos del coctail clicado. 
     const clickedCoctail = coctailsData.find(item => item.idDrink === idCoctail);
@@ -90,20 +94,23 @@ const addFavorite = (ev) => {
     if (isFavoriteCoctailIndex === -1) {
         //añadimos el coctail si no está
         coctailsFavorite.push(clickedCoctail);
+        ev.currentTarget.classList.add('blue');
     } else {
         //si está, lo quitamos de favoritos
         coctailsFavorite.splice(isFavoriteCoctailIndex, 1);
+        ev.currentTarget.classList.remove('blue');
     };
-
-    console.log(coctailsFavorite)
-       
+    
+    //añadir la clase a los que se clican para favoritos
+    //ev.currentTarget.classList.toggle('blue');
     renderFavorites();
+
+    //guardar favoritos en el local storage
     localStorage.setItem('coctailsFavorite', JSON.stringify(coctailsFavorite)); 
 };
 
-//RENDERIZAR FAVORITOS
+//Renderizar un favorito
 const renderOneFavoriteCoctail = (eachCoctail) => {
-
     return `<li class="card fav_coctail js_coctails_li">
         <button class="btn_remove js_remove_fav" id="${eachCoctail.idDrink}">Eliminar de favoritos</button>
         <h6>${eachCoctail.strDrink}</h6>
@@ -111,7 +118,7 @@ const renderOneFavoriteCoctail = (eachCoctail) => {
     </li>`
 };
 
-//render todos favoritos + evento sobre el botón eliminar
+//renderizar todos los favoritos + evento sobre el botón eliminar
 function renderFavorites () {
     favList.innerHTML = '';
     for (let i = 0; i < coctailsFavorite.length; i++) {
@@ -125,7 +132,6 @@ function renderFavorites () {
 };
 
 const removeFavorite = (ev) => {
-    console.log(ev.currentTarget.id)
     const idCoctail = ev.currentTarget.id;
     //obtenemos todos los datos del botón de eliminar clicado. 
     const clickedCoctail = coctailsData.find(item => item.idDrink === idCoctail);
@@ -141,9 +147,8 @@ const removeFavorite = (ev) => {
         coctailsFavorite.splice(isFavoriteCoctailIndex, 1);
     };
 
-    console.log(coctailsFavorite)
-       
-    renderFavorites(); 
+    renderFavorites();
+    
     //sobreescribimos el local storage 
     localStorage.setItem('coctailsFavorite', JSON.stringify(coctailsFavorite)); 
 };

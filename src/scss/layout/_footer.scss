@@ -6,11 +6,14 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
+    background-image: none;
+    background-color: white;
+    
 
     &_license {
         font-family: var(--brand-font);
         color: var(--azul-oscuro);
-        margin-left: 20px;
+        margin-left: 40px;
         margin-top: 10px;
         font-size: small;
 
@@ -21,7 +24,7 @@
 
     &_logo {
         width: 35px;
-        margin-right: 20px;
+        margin-right: 40px;
 
         @media screen and (min-width: 768px){
             width: 60px;

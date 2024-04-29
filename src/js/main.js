@@ -17,7 +17,7 @@ let coctailsFavorite = [];
 function search () {
     ulList.innerHTML = '';
     if (inputSearch.value === '') {
-        alert('Introduce un coctail para poder buscar :)')
+        alert('Introduce un coctail para empezar a buscar :)')
         getData("margarita");
     } else {
         getData(inputSearch.value);
@@ -59,7 +59,7 @@ const renderOneCoctail = (eachCoctail) => {
         imgCoctail = 'https://media.glamour.mx/photos/632371dd8645b8d42bd2a706/master/pass/cocteles-para-el-15-de-septiembre.jpg'
     }
     //convertir en operador ternario lo de arriba?
-    
+
     return `<li class="card js_coctails_li" id="${eachCoctail.idDrink}"> 
         <h6>${eachCoctail.strDrink}</h6>
         <img src="${imgCoctail}"/>
@@ -147,6 +147,7 @@ const removeFavorite = (ev) => {
         coctailsFavorite.splice(isFavoriteCoctailIndex, 1);
     };
 
+    
     renderFavorites();
     
     //sobreescribimos el local storage 

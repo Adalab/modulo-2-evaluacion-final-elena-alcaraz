@@ -1,7 +1,7 @@
 
 # Aplicación de buscador de cócteles
 
-¡Bienvenida a la aplicación de búsquedad de cócteles! Con **CoctailSearch** es posible buscar través del nombre entre una amplia gama de cócteles. Además, **podrás guardar tus cócteles favoritos** para poder acceder a ellos más tarde, así como eliminarlos de la lista si lo prefieres.
+¡Bienvenida a la aplicación de búsqueda de cócteles! Con **CoctailSearch** es posible buscar través del nombre entre una amplia gama de cócteles. Además, **podrás guardar tus cócteles favoritos** para poder acceder a ellos más tarde, así como eliminarlos de la lista si lo prefieres.
 
 **A través de CoctailSearch podrás:**
 

@@ -38,6 +38,16 @@
                 list-style: none;
             }
         }
+
+        .btnFavReset {
+            font-family: var(--brand-font);
+            border: solid 2px var(--amarillo);
+            font-weight: 800;
+            color: var(--granate);
+            font-size: small;
+            padding: 4px;
+            background-color: var(--azul);
+        }
     }
 
     .coctailsList {

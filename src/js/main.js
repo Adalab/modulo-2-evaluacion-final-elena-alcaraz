@@ -9,6 +9,7 @@ const SERVER_URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
 const buttonReset = document.querySelector('.js_reset');
 const favList = document.querySelector('.js_coctails_favorite');
 const resetFav = document.querySelector('.js_reset_favorites');
+const logBtn = document.querySelector('.js_log');
 
 let coctailsData = []
 let coctailsFavorite = [];
@@ -31,6 +32,12 @@ function reset () {
     ulList.innerHTML = '';
 };
 buttonReset.addEventListener('click', reset);
+
+function favoritesNumber () {
+    console.log(coctailsFavorite.length);
+}
+
+logBtn.addEventListener('click', favoritesNumber);
 
 //Función para resetear la lista de favs
 function resetFavorites () {
@@ -70,6 +77,9 @@ const renderOneCoctail = (eachCoctail) => {
     }
     return `<li class="card js_coctails_li" id="${eachCoctail.idDrink}"> 
         <h6>${eachCoctail.strDrink}</h6>
+        <p>${eachCoctail.strIngredient1}</p>
+        <p>${eachCoctail.strIngredient2}</p>
+        <p>${eachCoctail.strIngredient3}</p>
         <img src="${imgCoctail}"/>
         </li>`
 };

@@ -7,11 +7,18 @@
     justify-content: center;
     text-align: center;
     border: solid 4px;
+    height: auto;
     width: 108px;
+
+    &_ingredients {
+        color: black;
+        font-size: 11px;
+        font-weight: 500;
+    }
 
     @media screen and (min-width: 768px){
         width: 150px;
-        height: 180px;
+        min-height: 180px;
     }
 }
 
@@ -29,13 +36,13 @@ img {
 .fav_coctail {
     background-color: var(--azul);
     font-style: italic;
-    height: 180px;
+    height: auto;
 }
 
 .btn_remove {
     font-family: var(--brand-font);
     font-size: xx-small;
-    width: 50px;
+    width: 20px;
     margin-left: 5px;
     margin-bottom: 5px;
     border: solid var(--verde) 2px;

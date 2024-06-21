@@ -33,11 +33,6 @@ function reset () {
 };
 buttonReset.addEventListener('click', reset);
 
-function favoritesNumber () {
-    console.log(coctailsFavorite.length);
-}
-
-logBtn.addEventListener('click', favoritesNumber);
 
 //Función para resetear la lista de favs
 function resetFavorites () {
@@ -70,71 +65,86 @@ const getData = (value) => {
 };
 
 //RENDERIZAR UNA BEBIDA
-const renderOneCoctail = (eachCoctail) => {
+const renderOneCoctail = (eachCoctail, isFavorite, arrayFavorites) => {
     let imgCoctail = eachCoctail.strDrinkThumb;
     if (imgCoctail === null) {
-        imgCoctail = 'https://media.glamour.mx/photos/632371dd8645b8d42bd2a706/master/pass/cocteles-para-el-15-de-septiembre.jpg'
+        imgCoctail = 'https://media.glamour.mx/photos/632371dd8645b8d42bd2a706/master/pass/cocteles-para-el-15-de-septiembre.jpg';
     }
-    return `<li class="card js_coctails_li" id="${eachCoctail.idDrink}"> 
-        <h6>${eachCoctail.strDrink}</h6>
-        <p>${eachCoctail.strIngredient1}</p>
-        <p>${eachCoctail.strIngredient2}</p>
-        <p>${eachCoctail.strIngredient3}</p>
-        <img src="${imgCoctail}"/>
-        </li>`
+
+    var card = '';
+    if(arrayFavorites)
+    {
+        card += `<li class="card blue"><button class="js_remove_fav" id="${eachCoctail.idDrink}">❌</button>`;
+    }
+    else if(isFavorite){
+        card += `<li class="card js_coctails_li blue" id="${eachCoctail.idDrink}">`;
+    }
+    else{
+        card += `<li class="card js_coctails_li" id="${eachCoctail.idDrink}">`;
+    }
+
+    card += `<h6>${eachCoctail.strDrink}</h6>
+    <p class="card_ingredients">${eachCoctail.strIngredient1}, ${eachCoctail.strIngredient2}, ${eachCoctail.strIngredient3}</p>
+    <img src="${imgCoctail}"/>
+    </li>`;
+
+    return card;
 };
+
+
 
 //RENDERIZAR TODAS LAS BEBIDAS
 const renderAllCoctails = () => {
     //pintamos los cócteles
-    ulList.innerHTML = "" ; 
-    for (let i = 0; i < coctailsData.length; i++) {
-        ulList.innerHTML += renderOneCoctail(coctailsData[i])
+    ulList.innerHTML = '';
+    for(var item of coctailsData)
+    {
+        //mojito extra
+        const isFavorite = coctailsFavorite.some(coctailFavorite => coctailFavorite.idDrink == item.idDrink);
+        console.log(isFavorite);
+        ulList.innerHTML += renderOneCoctail(item, isFavorite, false);    
     }
+
     //asignamos el evento click a cada uno de los cócteles
     const allCoctailsLi = document.querySelectorAll('.js_coctails_li');
     for (let i = 0; i < allCoctailsLi.length; i++) {
-        allCoctailsLi[i].addEventListener('click', addFavorite);
+        allCoctailsLi[i].addEventListener('click', addorRemoveFavorite);
     }
 };
 
-//Función añadir favorito
-const addFavorite = (ev) => {
+
+//Función añadir favoritos
+const addorRemoveFavorite = (ev) => {
     const idCoctail = ev.currentTarget.id;
+    console.log(`El Id a tratar es: ${idCoctail}`);
     //obtenemos todos los datos del coctail clicado. 
     const clickedCoctail = coctailsData.find(item => item.idDrink === idCoctail);
 
-    //verificar si el coctail cliado ya es un fav
+    //verificar si la paleta cliada ya es un fav
     const isFavoriteCoctailIndex = coctailsFavorite.findIndex(item => item.idDrink === idCoctail);
     //condicional para añadir al array si no está, y quitarla si clicamos de nuevo
     if (isFavoriteCoctailIndex === -1) {
         //añadimos el coctail si no está
         coctailsFavorite.push(clickedCoctail);
-        ev.currentTarget.classList.add('blue');
     } else {
         //si está, lo quitamos de favoritos
         coctailsFavorite.splice(isFavoriteCoctailIndex, 1);
-        ev.currentTarget.classList.remove('blue')
     };
 
-    //añadimos el botón para poder limpiar todos los favoritos
-    resetFav.classList.remove('hidden');
-    
+    console.log(coctailsFavorite)
+       
     renderFavorites();
-
-    if (coctailsFavorite.length === 0) {
-        resetFav.classList.add('hidden');
-    }
-
-    //guardar favoritos en el local storage
+    renderAllCoctails();
+    btnResetFavorites();
     localStorage.setItem('coctailsFavorite', JSON.stringify(coctailsFavorite)); 
 };
 
 //Renderizar un favorito
 const renderOneFavoriteCoctail = (eachCoctail) => {
     return `<li class="card fav_coctail">
-        <button class="btn_remove js_remove_fav" id="${eachCoctail.idDrink}">Eliminar de favoritos</button>
+        <button class="btn_remove js_remove_fav" id="${eachCoctail.idDrink}">❌</button>
         <h6>${eachCoctail.strDrink}</h6>
+        <p class="card_ingredients">${eachCoctail.strIngredient1}, ${eachCoctail.strIngredient2}, ${eachCoctail.strIngredient3}</p>
         <img src="${eachCoctail.strDrinkThumb}"/>
     </li>`
 };
